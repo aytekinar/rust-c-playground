@@ -1,0 +1,22 @@
+services:
+  development:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+      args:
+        BASE_IMAGE: debian
+        BASE_VERSION: bookworm
+        DEVEL_DEPS: clang-16 clang-tools-16 cmake curl git gpg llvm-16 lldb-16 lld-16 sudo valgrind vim
+        USER_ID: ${USER_ID:-1000}
+        USER_NAME: ${USER_NAME:-rustdev}
+        USER_SHELL: ${USER_SHELL:-/bin/bash}
+    cap_add:
+      - BPF
+      - PERFMON
+      - SYS_PTRACE
+    tty: true
+    user: ${USER_NAME:-rustdev}
+    volumes:
+      - .:/workspace
+      - ${USERPROFILE}${HOME}/.ssh/id_rsa:/home/${USER_NAME:-rustdev}/.ssh/id_rsa:ro

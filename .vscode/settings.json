@@ -1,0 +1,16 @@
+{
+  // C/C++ related
+  "C_Cpp.clang_format_style": "LLVM",
+  "[c]": {
+    "editor.formatOnSave": true,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.suggest.insertMode": "replace",
+    "editor.wordBasedSuggestions": "off",
+  },
+  // Rust related
+  "rust-analyzer.check.command": "check",
+  "[rust]": {
+    "editor.formatOnSave": true,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+  },
+}
